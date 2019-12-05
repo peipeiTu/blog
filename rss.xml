@@ -1,4 +1,66 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[PeipeiTu's Blog]]></title><description><![CDATA[个人博客，大概会放些笔记吧]]></description><link>https://peipeiTu.github.com/blog</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 04 Dec 2019 10:08:55 GMT</lastBuildDate><item><title><![CDATA[GTM 表单追踪]]></title><description><![CDATA[来源博客 表单追踪方法选择 表单能抛出表单提交事件吗？(form表单，submit提交按钮) ： YES #1 选择默认的表单追踪触发器
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[PeipeiTu's Blog]]></title><description><![CDATA[个人博客，大概会放些笔记吧]]></description><link>https://peipeiTu.github.com/blog</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 05 Dec 2019 10:12:45 GMT</lastBuildDate><item><title><![CDATA[GTM 替换GA中的用户ID]]></title><description><![CDATA[1. 设定GA中的User-ID ,同意启用User-ID政策 下一步，不用管 下一步， 2. 在GTM中获取User ID的方法 # 让开发者使用方式传递User ID 开发者通过传递ID 在GTM 的变量中，声明好变量，类型为，命名与开发者传递的一致 # 将ID…]]></description><link>https://peipeiTu.github.com/blog/notebook/gtm/ga-user-id-replace/</link><guid isPermaLink="false">https://peipeiTu.github.com/blog/notebook/gtm/ga-user-id-replace/</guid><pubDate>Sun, 29 Sep 2019 03:31:19 GMT</pubDate><content:encoded>&lt;h4&gt;1. 设定GA中的User-ID&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;管理 → 媒体资源→ 跟踪信息 → User-ID&lt;/code&gt;,同意启用User-ID政策&lt;/li&gt;
+&lt;li&gt;下一步&lt;code class=&quot;language-text&quot;&gt;设置User-ID&lt;/code&gt;，不用管&lt;/li&gt;
+&lt;li&gt;下一步，&lt;code class=&quot;language-text&quot;&gt;创建User-ID视图&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h4&gt;2. 在GTM中获取User ID的方法&lt;/h4&gt;
+&lt;h6&gt;# 让开发者使用&lt;code class=&quot;language-text&quot;&gt;datalayer&lt;/code&gt;方式传递User ID&lt;/h6&gt;
+&lt;ul&gt;
+&lt;li&gt;开发者通过&lt;code class=&quot;language-text&quot;&gt;windows.dataLayer.push({userId:&amp;#39;123456&amp;#39;})&lt;/code&gt;传递ID&lt;/li&gt;
+&lt;li&gt;在GTM 的变量中，声明好变量&lt;code class=&quot;language-text&quot;&gt;User_id&lt;/code&gt;，类型为&lt;code class=&quot;language-text&quot;&gt;数据层变量&lt;/code&gt;，命名与开发者传递的一致&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h6&gt;# 将ID存储在cookie中&lt;/h6&gt;
+&lt;ul&gt;
+&lt;li&gt;开发者将ID存储在cookie中，可以在GTM中的自定义变量 - cookie中获取。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h6&gt;# 使用javascript变量寻找ID&lt;/h6&gt;
+&lt;ul&gt;
+&lt;li&gt;当ID存在于js全局变量中时，可以使用。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h6&gt;# 在DOM中寻找ID&lt;/h6&gt;
+&lt;ul&gt;
+&lt;li&gt;当页面展示内容中存在ID，可以通过DOM获取ID。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h6&gt;# 在URL中找ID&lt;/h6&gt;
+&lt;hr&gt;
+&lt;h4&gt;3. 更新GA设置变量&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;在之前配置好的&lt;code class=&quot;language-text&quot;&gt;GA设置&lt;/code&gt;变量中，选择更多设置，添加字段&lt;code class=&quot;language-text&quot;&gt;userId - {{userId}}&lt;/code&gt;,将在上一步中定义好的变量赋值给userId&lt;/li&gt;
+&lt;li&gt;在GA中新建好userId维度，同时在&lt;code class=&quot;language-text&quot;&gt;GA设置&lt;/code&gt;中设置维度，注意维度的ID要一致，也赋值userId&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[GTM 中支持的GA类型]]></title><description><![CDATA[在中，代码类型设置为GA时，跟踪类型有…]]></description><link>https://peipeiTu.github.com/blog/notebook/gtm/ga-type/</link><guid isPermaLink="false">https://peipeiTu.github.com/blog/notebook/gtm/ga-type/</guid><pubDate>Sun, 29 Sep 2019 02:31:19 GMT</pubDate><content:encoded>&lt;h6&gt;在&lt;code class=&quot;language-text&quot;&gt;GTM&lt;/code&gt;中，代码类型设置为GA时，跟踪类型有&lt;code class=&quot;language-text&quot;&gt;网页浏览、事件、交易、社交、计时、装饰链接、装饰表单&lt;/code&gt;7种。&lt;/h6&gt;
+&lt;h5&gt;# 网页浏览&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;一般情况下，选择自带默认触发器&lt;code class=&quot;language-text&quot;&gt;All Pages页面浏览&lt;/code&gt;即可。&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;单页应用情况，由于页面不会刷新，即无法触发&lt;code class=&quot;language-text&quot;&gt;网页浏览&lt;/code&gt;时：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;触发条件同时添加&lt;code class=&quot;language-text&quot;&gt;All Pages页面浏览&lt;/code&gt;和&lt;code class=&quot;language-text&quot;&gt;历史记录变更&lt;/code&gt;，后者每当地址栏变化时都会被触发。&lt;/li&gt;
+&lt;li&gt;在&lt;code class=&quot;language-text&quot;&gt;GA设置&lt;/code&gt;中，替换字段&lt;code class=&quot;language-text&quot;&gt;page - {{New History Fragment}}&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5&gt;# 事件&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;事件主要有以下四个参数设置：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;类别&lt;/strong&gt;：即事件名称，对要分析的对象进行分组。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;操作&lt;/strong&gt;：命名要针对特定网站对象衡量的事件或互动的类型。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;标签 [可选，建议填]&lt;/strong&gt;：为事件提供更多信息。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;值 [可选]&lt;/strong&gt;：整数，用于为网页对象指定数值。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;我目前理解为：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;类别&lt;/code&gt;是整个事件的一个泛化名称，如导航栏点击事件；&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;操作&lt;/code&gt;和&lt;code class=&quot;language-text&quot;&gt;标签&lt;/code&gt;是对事件的具体情况细分，如到底点击了导航栏的哪个按钮，以及到底在哪个页面进行了点击，两者差不多是平等的，根据实际情况进行设置；&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;值&lt;/code&gt;是对这一事件的价值评估，在事件价值衡量的时候，一般采用这个值来等价。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[GTM 表单追踪]]></title><description><![CDATA[来源博客 表单追踪方法选择 表单能抛出表单提交事件吗？(form表单，submit提交按钮) ： YES #1 选择默认的表单追踪触发器
 NO ↓
 成功后页面刷新吗？页面URL更改吗？目标URL唯一吗？： YES #2 选择“thank you”页面表单追踪
 NO ↓
