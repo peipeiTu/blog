@@ -14,7 +14,7 @@ const NotebookIndex = ({ data }) => {
       <Row>
         {data.allMarkdownRemark.group.map(({ fieldValue, edges }) => (
           <Col sm={6} key={fieldValue}>
-            <Card className="mx-3 border-0">
+            <Card className="mx-3 border-0 mb-3">
               <Card.Header className="text-dark font-weight-bold">
                 {fieldValue}
               </Card.Header>

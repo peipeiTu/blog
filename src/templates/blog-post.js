@@ -10,9 +10,11 @@ class BlogPostTemplate extends React.Component {
 
     return (
       <Layout location={this.props.location} title={post.frontmatter.title}>
-        <h2 className="mb-2 mt-5">{post.frontmatter.title}</h2>
-        <div className="mb-5 text-muted">{post.frontmatter.date}</div>
-        <section dangerouslySetInnerHTML={{ __html: post.html }} />
+        <div id="markdown" className="px-5 py-3 rounded">
+          <h2 className="mb-2 mt-5">{post.frontmatter.title}</h2>
+          <div className="mb-5 text-muted">{post.frontmatter.date}</div>
+          <section dangerouslySetInnerHTML={{ __html: post.html }} />
+        </div>
       </Layout>
     )
   }

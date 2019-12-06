@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
-import { Box, Button, AppBar, Typography, Container } from '@material-ui/core'
-import { Navbar, Nav, NavDropdown, } from 'react-bootstrap'
+import { Container } from '@material-ui/core'
+import { Navbar, Nav } from 'react-bootstrap'
 
 import SEO from './seo'
 
@@ -25,7 +25,7 @@ const Layout = ({ location, title, children }) => {
         </Navbar.Collapse>
       </Navbar>
       <SEO title={title} />
-      <Container maxWidth="lg" className="pt-5">
+      <Container maxWidth="lg" className="pt-5 pb-5">
         {children}
       </Container>
     </>

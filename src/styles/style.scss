@@ -7,3 +7,15 @@ a:hover {
 * {
   line-height: 200%;
 }
+
+#___gatsby {
+  background: url('../assets/main.jpg') 0 / cover fixed;
+  min-height: 100vh;
+}
+
+#markdown {
+  z-index: 999;
+  position: relative;
+  background: hsla(0, 0%, 100%, .85);
+  overflow: hidden;
+}
