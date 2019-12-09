@@ -7,7 +7,6 @@ import Layout from "../../components/layout"
 const NotebookIndex = ({ data }) => {
 
   const posts = data.allMarkdownRemark;
-  console.log(posts);
 
   return (
     <Layout title={'笔记列表'}>
