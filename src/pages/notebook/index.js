@@ -1,16 +1,15 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-import { Row, Col, Card, ListGroup } from 'react-bootstrap'
+import { Col, Card, ListGroup } from 'react-bootstrap'
+import Masonry from 'react-masonry-component'
 
 import Layout from "../../components/layout"
 
 const NotebookIndex = ({ data }) => {
 
-  const posts = data.allMarkdownRemark;
-
   return (
     <Layout title={'笔记列表'}>
-      <Row>
+      <Masonry>
         {data.allMarkdownRemark.group.map(({ fieldValue, edges }) => (
           <Col sm={6} key={fieldValue}>
             <Card className="mx-3 border-0 mb-3">
@@ -27,7 +26,7 @@ const NotebookIndex = ({ data }) => {
             </Card>
           </Col>
         ))}
-      </Row>
+      </Masonry>
     </Layout>
   )
 }

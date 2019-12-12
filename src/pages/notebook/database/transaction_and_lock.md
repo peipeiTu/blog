@@ -1,5 +1,5 @@
 ---
-title: "事务和锁（包含Sequelize下的操作）"
+title: "事务和锁（包含Sequelize下的代码）"
 date: "2019-12-09T06:09:03.000Z"
 description: "事务和锁"
 type: "数据库"

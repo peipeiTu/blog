@@ -1,12 +1,11 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 
 class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark;
-
 
     return (
       <Layout location={this.props.location} title={post.frontmatter.title}>
@@ -26,6 +25,7 @@ export const pageQuery = graphql`
   query($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
+      tableOfContents
       frontmatter {
         title
         date
