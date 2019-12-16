@@ -9,7 +9,7 @@ type: "数据库"
 * 事务是数据库执行过程中的一个逻辑单位，由一系列有限的数据库操作序列构成。被事务裹起来的这些操作会有共同的执行结果，要么全部成功，要么失败并全部回滚。可以解决操作原子性的问题。
 
 如银行转账，A转账100给B，即需要：
-```
+```sql
 A余额 -= 100
 B余额 += 100
 ```
@@ -25,18 +25,18 @@ commit;
 
 ```javascript
 await sequelize.transaction({}, async (transaction) => {
-    const instance = await Accounts.findOne({
-      where: {
-        name: 'name',
-      },
-      transaction
-    });
-    
-    await instance.update({
-      balances: instance.balances + number,
-    }, {
-      transaction
-    })
+  const instance = await Accounts.findOne({
+    where: {
+      name: 'name',
+    },
+    transaction
+  });
+  
+  await instance.update({
+    balances: instance.balances + number,
+  }, {
+    transaction
+  })
 })
 
 ```
@@ -113,7 +113,8 @@ await Accounts.findOne({
     </tr>
   </tbody>
 </table>
+
 * ×表示在这个级别里，某类问题不会出现。
 
-相关文章
+###### 相关文章
 * [学点后端知识之 Sequelize 中创建事务和🔐](https://juejin.im/post/5c98e31f51882574c6520dc3)

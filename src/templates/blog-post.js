@@ -28,7 +28,7 @@ export const pageQuery = graphql`
       tableOfContents
       frontmatter {
         title
-        date
+        date(formatString: "YYYY-MM-DD HH:mm")
         description
         type
       }

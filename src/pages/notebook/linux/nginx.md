@@ -19,6 +19,15 @@ sudo apt install nginx
 systemctl status nginx
 ```
 
+#### Nginx 配置
+1. 单页应用静态文件部署，需要加上如下配置：
+
+```
+location / {
+  try_files $uri $uri/ /index.html;
+}
+```
+
 #### Nginx 限制IP访问频率
 1. 添加`limit_req_zone`。这个变量只能在http使用
 
@@ -52,4 +61,68 @@ server{
 ...
 }
 ...
+```
+
+#### 配置HTTPS
+可以使用`certbot`进行设置，在这里只记录`ubuntu18`的`nginx`设置方法，其他的[点此查看](https://certbot.eff.org/lets-encrypt/ubuntuxenial-nginx)
+```bash
+# 添加Certbot PPA
+sudo apt update
+sudo apt install software-properties-common
+sudo add-apt-repository universe
+sudo add-apt-repository ppa:certbot/certbot
+sudo apt update
+
+# 安装Certbot
+sudo apt install certbot python-certbot-nginx
+
+# 安装证书
+sudo certbot --nginx
+
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Plugins selected: Authenticator nginx, Installer nginx
+# 选择要安装证书的域名,域名需要在nginx配置填写好才能搜索
+Which names would you like to activate HTTPS for?
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+1: www.example.com
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Select the appropriate numbers separated by commas and/or spaces, or leave input
+blank to select all options shown (Enter 'c' to cancel): 1  
+# 这里的认证需要保证当前nginx正确工作，并且域名正确指向本台服务器，即验证这个域名是否归你所有
+Obtaining a new certificate
+Performing the following challenges:
+http-01 challenge for www.example.com
+Waiting for verification...
+Cleaning up challenges
+Deploying Certificate to VirtualHost /etc/nginx/sites-enabled/node
+# 是否将所有请求都跳转到https上
+Please choose whether or not to redirect HTTP traffic to HTTPS, removing HTTP access.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+1: No redirect - Make no further changes to the webserver configuration.
+2: Redirect - Make all requests redirect to secure HTTPS access. Choose this for
+new sites, or if you're confident your site works on HTTPS. You can undo this
+change by editing your web server's configuration.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Select the appropriate number [1-2] then [enter] (press 'c' to cancel): 2 
+Redirecting all traffic on port 80 to ssl in /etc/nginx/sites-enabled/node
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Congratulations! You have successfully enabled https://www.example.com
+
+You should test your configuration at:
+https://www.ssllabs.com/ssltest/analyze.html?d=www.example.com
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# 安装完成后，certbot会自动新建定时任务来定时刷新证书，避免过期
+# 通过以下命令检查自动更新是否能顺利进行
+$ sudo certbot renew --dry-run
+
+# 检查定时任务是否正确添加
+$ sudo systemctl list-timers
+
+NEXT                         LEFT         LAST                         PASSED             UNIT                         ACTIVATES
+Mon 2019-12-16 20:31:18 CST  3h 9min left Mon 2019-12-16 07:45:10 CST  9h ago             apt-daily.timer              apt-daily.service
+Tue 2019-12-17 06:09:19 CST  12h left     Mon 2019-12-16 06:32:56 CST  10h ago            apt-daily-upgrade.timer      apt-daily-upgrade.service
+Tue 2019-12-17 09:06:43 CST  15h left     n/a                          n/a                certbot.timer                certbot.service
+
 ```
