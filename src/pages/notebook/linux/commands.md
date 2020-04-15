@@ -21,6 +21,7 @@ type: "Linux使用"
 #### `journalctl` 查看systemd-journald服务收集到的日志
 * `journalctl`：输出所有日志。
 为了分类查询，常用的选项有如下一些：
+* `-f`: 查看当前的日志并持续输出
 * `-u/--unit [UNIT]`：查看特定项目的日志，如`-u mysqld`
 * `-S/--since [DATE]`：设定开始时间，以格式`YYYY-MM-DD HH:mm`输入
 * `-U/--until [DATE]`：设定结束时间，以格式`YYYY-MM-DD HH:mm`输入
