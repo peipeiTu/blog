@@ -9,13 +9,7 @@ import SEO from './seo'
 const Layout = ({ location, title, children }) => {
   const [fixed, setFixed] = React.useState(false);
 
-  const visibilitySensorChange = val => {
-    if (val) {
-      setFixed(false);
-    } else {
-      setFixed(true);
-    }
-  };
+  const visibilitySensorChange = val => setFixed(!val);
 
   const getHeaderClass = () => {
     return fixed ? 'bg-light navbar-light px-5 shadow-sm' : 'bg-dark navbar-dark px-5';
@@ -24,18 +18,12 @@ const Layout = ({ location, title, children }) => {
   return (
     <>
       <Navbar bg="light" id="navbar" expand="lg" sticky="top" className={getHeaderClass()}>
-        <Link to="/">
-          <Navbar.Brand as="span">PeipeiTu的博客</Navbar.Brand>
-        </Link>
+        <Navbar.Brand href="/">PeipeiTu的博客</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto">
-            <Link className="mx-3" to="/">
-              <Nav.Link as="span">Home</Nav.Link>
-            </Link>
-            <Link className="mx-3" to="/notebook">
-              <Nav.Link as="span">笔记</Nav.Link>
-            </Link>
+            <Nav.Link to="/">Home</Nav.Link>
+            <Nav.Link href="/notebook">笔记</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
