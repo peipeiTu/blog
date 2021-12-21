@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-templates-blog-post-js",
+    "componentChunkName": "component---src-pages-notebook-program-semver-2-0-0-md",
     "path": "/notebook/program/semver_2.0.0/",
-    "result": {"data":{"markdownRemark":{"html":"<p>版本格式一般为：主版本号.次版本号.修订号。递增规则为：</p>\n<ul>\n<li>主版本号：新版本有<strong>不兼容的API修改</strong></li>\n<li>次版本号：新版本向下<strong>兼容</strong>，做了<strong>功能性</strong>的新增</li>\n<li>修订号：新版本向下兼容，做了<strong>问题修正</strong></li>\n</ul>","tableOfContents":"","frontmatter":{"title":"语义化版本 2.0.0","date":"2020-06-10 06:48","description":"版本号的语义化定义","type":"编程"}}},"pageContext":{"slug":"/notebook/program/semver_2.0.0/","previous":{"fields":{"slug":"/notebook/database/sequelize/"},"frontmatter":{"title":"Sequelize常用方法"}},"next":{"fields":{"slug":"/notebook/program/regular_expression/"},"frontmatter":{"title":"正则表达式"}}}},
-    "staticQueryHashes": ["63159454"]}
+    "result": {"pageContext":{"frontmatter":{"title":"语义化版本 2.0.0","date":"2020-06-10T06:48:00.000Z","description":"版本号的语义化定义","type":"编程"}}},
+    "staticQueryHashes": []}
