@@ -1,10 +1,7 @@
 import React from "react"
-import { Link } from "gatsby"
-import { Container } from '@material-ui/core'
+import { Link } from 'gatsby';
 import { Navbar, Nav } from 'react-bootstrap'
 import VisibilitySensor from 'react-visibility-sensor'
-
-import SEO from './seo'
 
 const Layout = ({ location, title, children }) => {
   const [fixed, setFixed] = React.useState(false);
@@ -22,18 +19,15 @@ const Layout = ({ location, title, children }) => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto">
-            <Nav.Link to="/">Home</Nav.Link>
-            <Nav.Link href="/notebook">笔记</Nav.Link>
+            <Link to="/"><Nav.Link as="span">Home</Nav.Link></Link>
+            <Link to="/notebook"><Nav.Link as="span">笔记</Nav.Link></Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
       <VisibilitySensor onChange={visibilitySensorChange}>
         <div className="sensor"></div>
       </VisibilitySensor>
-      <SEO title={title} />
-      <Container maxWidth="lg" className="pt-5 pb-5">
-        {children}
-      </Container>
+      {children}
     </>
   )
 }

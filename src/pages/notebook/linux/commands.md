@@ -6,7 +6,6 @@ type: "Linux使用"
 ---
 
 **在我使用`Ubuntu`过程中常使用的命令及其参数，姑且按照字母顺序排列。**
-<br><br>
 
 #### `alien` 安装rpm文件
 * 使用前首先需要安装 `apt-get install alien`

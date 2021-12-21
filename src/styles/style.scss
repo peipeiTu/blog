@@ -1,7 +1,11 @@
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
-a:hover {
+a {
   text-decoration: none;
+
+  :hover {
+    text-decoration: none;
+  }
 }
 
 * {
@@ -23,8 +27,6 @@ a:hover {
 #navbar {
   transition: color .4s !important;
   transition: background-color .4s !important;
-  // width: 100vw;
-  // padding-left: calc(100vw - 101%);
   box-shadow: none;
 }
 

@@ -6,7 +6,6 @@ type: "NodeJs"
 ---
 
 ### Buffer - 缓冲器
-<br>
 
 ##### 1. `Buffer()和 new Buffer()` 已废弃
 
@@ -17,7 +16,6 @@ type: "NodeJs"
 
 ---
 ### child_process - 子进程
-<br>
 
 ##### 1. 创建进程
 子进程模块可以创建异步或同步的进程，来执行额外的命令，如`ls`等在控制台执行的命令。

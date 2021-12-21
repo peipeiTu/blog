@@ -7,6 +7,7 @@ module.exports = {
     siteUrl: `https://peipeiTu.github.com/blog/`
   },
   plugins: [
+    'gatsby-plugin-mdx-frontmatter',
     'gatsby-plugin-sass',
     {
       resolve: `gatsby-source-filesystem`,
@@ -23,9 +24,10 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: `gatsby-plugin-mdx`,
       options: {
-        plugins: [
+        extensions: [`.md`, `.mdx`],
+        gatsbyRemarkPlugins: [
           {
             resolve: `gatsby-remark-images`,
             options: {

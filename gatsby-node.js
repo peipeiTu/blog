@@ -5,55 +5,51 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
-  const result = await graphql(
-    `
-      {
-        allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: DESC }
-          limit: 1000
-        ) {
-          edges {
-            node {
-              fields {
-                slug
-              }
-              frontmatter {
-                title
-              }
-            }
-          }
+  const result = await graphql(`
+    {
+      allMdx {
+        nodes {
+          slug
         }
       }
-    `
-  )
+    }
+  `)
 
-  if (result.errors) {
-    throw result.errors
-  }
+  if (result.errors) throw result.errors;
+
 
   // Create blog posts pages.
-  const posts = result.data.allMarkdownRemark.edges
+  const posts = result.data.allMdx.nodes
 
-  posts.forEach((post, index) => {
-    const previous = index === posts.length - 1 ? null : posts[index + 1].node
-    const next = index === 0 ? null : posts[index - 1].node
-
+  posts.forEach(({slug}) => {
     createPage({
-      path: post.node.fields.slug,
+      path: slug,
       component: blogPost,
       context: {
-        slug: post.node.fields.slug,
-        previous,
-        next,
-      },
+        slug: slug
+      }
     })
   })
 }
 
+exports.createSchemaCustomization = ({ actions: { createTypes } }) => {
+  createTypes(`
+    type Mdx implements Node {
+      frontmatter: MdxFrontmatter
+    }
+
+    type MdxFrontmatter {
+      date: String
+      description: String
+      type: String
+    }
+  `);
+};
+
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
-  if (node.internal.type === `MarkdownRemark`) {
+  if (node.internal.type === `Mdx`) {
     const value = createFilePath({ node, getNode })
     createNodeField({
       name: `slug`,
