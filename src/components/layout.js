@@ -15,7 +15,7 @@ const Layout = ({ location, title, children }) => {
   return (
     <>
       <Navbar bg="light" id="navbar" expand="lg" sticky="top" className={getHeaderClass()}>
-        <Navbar.Brand href="/">PeipeiTu的博客</Navbar.Brand>
+        <Link to="/"><Navbar.Brand as="span">PeipeiTu的博客</Navbar.Brand></Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto">

@@ -21,7 +21,7 @@ const NotebookIndex = ({ data }) => {
               <ListGroup className="mb-2">
                 {nodes.map(({ id, slug, frontmatter }) => (
                   <ListGroup.Item key={id} className="border-0 py-1">
-                    <Link to={`/${slug}`}>{frontmatter.title}</Link>
+                    <Link to={`/${slug}`} className='link-secondary'>{frontmatter.title}</Link>
                   </ListGroup.Item>
                 ))}
               </ListGroup>
