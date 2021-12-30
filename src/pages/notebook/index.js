@@ -7,7 +7,6 @@ import { Container } from '@material-ui/core'
 import Layout from "../../components/layout"
 
 const NotebookIndex = ({ data }) => {
-  console.log(data);
   return (
     <Layout title={'笔记列表'}>
       <Container maxWidth="lg" className='py-5'>

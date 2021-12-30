@@ -16,7 +16,7 @@ class BlogPostTemplate extends React.Component {
             <Col lg="2">
               <div className='mb-5 ml-5'><Link to='/notebook' className='text-light'>&lt; 返回列表</Link></div>
               <ul>
-                {post.tableOfContents.items.map(({ url, title, items }, index) => (
+                {post.tableOfContents.items?.map(({ url, title, items }, index) => (
                   <li key={index}>
                     <Link to={url} className='link-secondary text-truncate'>{title}</Link>
                     <ul>
