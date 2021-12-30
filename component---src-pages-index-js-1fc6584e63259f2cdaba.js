@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[4],{RXBc:function(t,o,n){"use strict";n.r(o);var r=n("q1tI"),e=n.n(r),p=n("Bl7J");var c=function(t){var o,n;function r(){return t.apply(this,arguments)||this}return n=t,(o=r).prototype=Object.create(n.prototype),o.prototype.constructor=o,o.__proto__=n,r.prototype.render=function(){return e.a.createElement(p.a,{location:this.props.location,title:"博客首页"},"这是首页，但我还没想好放些什么")},r}(e.a.Component);o.default=c}}]);
-//# sourceMappingURL=component---src-pages-index-js-1fc6584e63259f2cdaba.js.map
